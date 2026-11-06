@@ -1,0 +1,30 @@
+[
+  {
+    "filename": "portrait.jpg",
+    "source": "../../../output/resume-source.html",
+    "description": "User portrait from existing resume"
+  },
+  {
+    "filename": "physomni.jpg",
+    "source": "https://zephipage.github.io/PhysOmni",
+    "assetUrl": "https://zephipage.github.io/PhysOmni/static/images/teaser.jpg",
+    "description": "Original research teaser, resized/re-encoded for web delivery; no content changes"
+  },
+  {
+    "filename": "uniworld.jpg",
+    "source": "https://zephipage.github.io/UniWorld",
+    "assetUrl": "https://zephipage.github.io/UniWorld/assets/figures/teaser.png",
+    "description": "Original research teaser, resized/re-encoded for web delivery; no content changes"
+  },
+  {
+    "filename": "tourphysics.jpg",
+    "source": "https://arxiv.org/html/2609.04911",
+    "assetUrl": "https://arxiv.org/html/2609.04911v2/teaser.png",
+    "description": "Original research teaser, resized/re-encoded for web delivery; no content changes"
+  },
+  {
+    "filename": "portrait-illustration.jpg",
+    "source": "../../Gemini_Generated_Image_l5sq6ml5sq6ml5sq.jpeg",
+    "description": "User-provided illustrated portrait; resized and JPEG-optimized for web delivery."
+  }
+]
