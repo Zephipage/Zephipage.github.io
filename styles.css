@@ -14,6 +14,22 @@
 .publication-list{border-top:1px solid var(--line)}
 
 /* Registered portrait layers with a soft, cursor-following reveal. */
+
+.selected-work-heading{flex-wrap:wrap}
+.work-actions{display:flex;align-items:center;gap:14px}
+.work-scroll-controls{display:flex;gap:6px}
+.work-scroll-controls[hidden]{display:none}
+.work-scroll-button{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;color:var(--muted)}
+.work-scroll-button:hover:not(:disabled){background:var(--surface);color:var(--accent)}
+.work-scroll-button:disabled{opacity:.35;cursor:default}
+.work-scroll-button svg{width:16px;height:16px}
+#selected-work{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-template-rows:1fr;grid-auto-columns:calc((100% - 44px)/3);gap:22px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--line) transparent;scroll-padding-inline:1px;padding:0 1px 10px}
+#selected-work::-webkit-scrollbar{height:6px}
+#selected-work::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+#selected-work .work-card{scroll-snap-align:start;min-width:0}
+#selected-work:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media(max-width:800px){#selected-work{grid-auto-columns:calc((100% - 16px)/2);gap:16px}}
+@media(max-width:600px){.selected-work-heading{align-items:center}#selected-work{grid-auto-columns:85%;gap:16px;scroll-padding-inline:0}.work-actions{gap:10px}.work-scroll-controls{gap:4px}}
 .portrait-frame {
   --reveal-x: 50%;
   --reveal-y: 50%;

@@ -13,17 +13,45 @@
   const displayVenue = (p) => p.venue === 'Preprint' ? `${text('Preprint', '预印本')} · ${p.year}` : escape(p.venue);
   const citation = (p) => `${p.authors} (${p.year}). ${p.title}. ${p.venue}. ${p.paper}`;
   const projectNames = {physomni: 'PhysOmni', tourphysics: 'TourPhysics', uniworld: 'UniWorld', 'cocode-world': 'CoCode-World'};
+  function updateWorkControls() {
+    const track = $('#selected-work');
+    const controls = $('#work-scroll-controls');
+    const previous = $('#work-scroll-prev');
+    const next = $('#work-scroll-next');
+    const canScroll = track.scrollWidth > track.clientWidth + 1;
+    controls.hidden = !canScroll;
+    previous.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+    track.setAttribute('aria-label', text('Selected work', '代表工作'));
+    previous.setAttribute('aria-label', text('Previous featured work', '上一项代表工作'));
+    next.setAttribute('aria-label', text('Next featured work', '下一项代表工作'));
+  }
+  function scrollSelectedWork(direction) {
+    const track = $('#selected-work');
+    const card = track.querySelector('.work-card');
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    const distance = card ? card.getBoundingClientRect().width + gap : track.clientWidth;
+    track.scrollBy({left: direction * distance, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  }
   function renderSelected() {
-    $('#selected-work').innerHTML = papers.filter(p => p.selected).map((p, i) => `<article class="work-card">
+    const track = $('#selected-work');
+    const scrollLeft = track.scrollLeft;
+    track.innerHTML = papers.filter(p => p.selected).map((p, i) => `<article class="work-card">
       <a class="work-image" href="${safeLink(p.project || p.paper)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(projectNames[p.id])}: ${text('View project', '查看研究')}"><img src="assets/${p.id}.jpg" alt="${escape(projectNames[p.id])} ${text('research overview', '研究概览')}" loading="lazy" width="680" height="380"><span class="image-arrow" aria-hidden="true">↗</span></a>
       <div class="work-meta"><span>${displayVenue(p)}</span><span>0${i + 1}</span></div>
       <h3>${external(p.project || p.paper, projectNames[p.id])}</h3>
       <p>${escape(language === 'zh' ? p.summaryZh : p.summaryEn)}</p>
       <div class="work-links">${external(p.paper, text('Paper ↗', '论文 ↗'))}${p.project ? external(p.project, text('Project ↗', '项目主页 ↗')) : ''}</div></article>`).join('');
-    $('#selected-work').querySelectorAll('img').forEach(img => img.addEventListener('error', () => {
+    track.scrollLeft = scrollLeft;
+    track.querySelectorAll('img').forEach(img => img.addEventListener('error', () => {
       const fallback = document.createElement('span'); fallback.className = 'visual-fallback'; fallback.textContent = img.alt.replace(/ research overview| 研究概览/, ''); img.replaceWith(fallback);
     }, {once:true}));
+    updateWorkControls();
   }
+  $('#selected-work').addEventListener('scroll', updateWorkControls, {passive:true});
+  window.addEventListener('resize', updateWorkControls);
+  $('#work-scroll-prev').addEventListener('click', () => scrollSelectedWork(-1));
+  $('#work-scroll-next').addEventListener('click', () => scrollSelectedWork(1));
   function renderPublications() {
     let lastYear = null;
     const visiblePapers = papersExpanded ? papers : papers.slice(0, initialPaperCount);
