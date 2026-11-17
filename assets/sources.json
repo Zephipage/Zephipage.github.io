@@ -17,6 +17,12 @@
     "description": "Original research teaser, resized/re-encoded for web delivery; no content changes"
   },
   {
+    "filename": "cocode-world.jpg",
+    "source": "https://iapple233.github.io/CCW/",
+    "assetUrl": "https://iapple233.github.io/CCW/assets/media/social-preview.jpg",
+    "description": "Official project social preview, resized and re-encoded for the homepage research card."
+  },
+  {
     "filename": "tourphysics.jpg",
     "source": "https://arxiv.org/html/2609.04911",
     "assetUrl": "https://arxiv.org/html/2609.04911v2/teaser.png",
