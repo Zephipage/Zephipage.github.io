@@ -38,6 +38,19 @@ window.PUBLICATIONS = [
     "summaryZh": "以深度轨迹和参考外观统一建模，通过噪声对齐的滚动续写，实现长时一致的连续视觉仿真。"
   },
   {
+    "id": "cocode-world",
+    "title": "CoCode-World: Shared 3D Proxy Representation for Multi-Player World Models",
+    "authors": "Li, Q., Zhang, X., Chen, Y., Hao, J., Rosin, P. L., Lai, Y.-K., Huang, H., Chen, Y., Yi, R., Zhang, C.",
+    "year": 2026,
+    "venue": "arXiv preprint arXiv:2611.15602",
+    "paper": "https://arxiv.org/abs/2611.15602",
+    "category": "world-models",
+    "selected": true,
+    "project": "https://iapple233.github.io/CCW/",
+    "summaryEn": "Joint two-player video generation using a shared 3D proxy representation.",
+    "summaryZh": "基于共享 3D 代理表示，探索多人世界模型中的联合视频生成。"
+  },
+  {
     "id": "learning-autoregressive",
     "title": "Learning the Autoregressive: Direct Score-Difference Estimation with Amortized Future Credit for Video Distillation",
     "authors": "Duan, Z., Chen, Y., Xiang, X., Zhang, X., Huang, H., Chen, Y., Zhang, C., Fan, Q.",

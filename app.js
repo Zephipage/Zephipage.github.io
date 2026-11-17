@@ -12,7 +12,7 @@
   const external = (href, label) => `<a href="${safeLink(href)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
   const displayVenue = (p) => p.venue === 'Preprint' ? `${text('Preprint', '预印本')} · ${p.year}` : escape(p.venue);
   const citation = (p) => `${p.authors} (${p.year}). ${p.title}. ${p.venue}. ${p.paper}`;
-  const projectNames = {physomni: 'PhysOmni', tourphysics: 'TourPhysics', uniworld: 'UniWorld'};
+  const projectNames = {physomni: 'PhysOmni', tourphysics: 'TourPhysics', uniworld: 'UniWorld', 'cocode-world': 'CoCode-World'};
   function renderSelected() {
     $('#selected-work').innerHTML = papers.filter(p => p.selected).map((p, i) => `<article class="work-card">
       <a class="work-image" href="${safeLink(p.project || p.paper)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(projectNames[p.id])}: ${text('View project', '查看研究')}"><img src="assets/${p.id}.jpg" alt="${escape(projectNames[p.id])} ${text('research overview', '研究概览')}" loading="lazy" width="680" height="380"><span class="image-arrow" aria-hidden="true">↗</span></a>
